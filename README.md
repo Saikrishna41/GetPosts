@@ -10,7 +10,7 @@ the code from using a `LiveData` to using a `Flow`. *
 [Coroutines | Getting started](https://kotlinlang.org/docs/coroutines-basics.html "Coroutines | Getting started")
 [Kotlin coroutines on Android](https://developer.android.com/kotlin/coroutines "Kotlin coroutines on Android")
 
-##### Dagger
+##### Dagger Hilt
 We use Dagger 2 to manage the dependency injection.
 [Dagger | Tutorial](https://dagger.dev/tutorial/ "Dagger | Tutorial")
 
