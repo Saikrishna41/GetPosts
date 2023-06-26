@@ -1,12 +1,16 @@
 package com.techfortyone.getposts.di
 
 import android.util.Config
+import com.techfortyone.getposts.data.remote.PhotoApiServiceHelper
+import com.techfortyone.getposts.data.remote.PhotoApiServiceImpl
+import com.techfortyone.getposts.data.remote.PhotosApiService
 import com.techfortyone.getposts.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 /***
@@ -39,7 +43,16 @@ object AppModule {
     @Provides
     @Singleton
     fun providesRetrofit(baseurl: String, okHttpClient: OkHttpClient) =
-        Retrofit.Builder().baseUrl(baseurl).client(okHttpClient).build()
+        Retrofit.Builder().baseUrl(baseurl).client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build()
 
 
+    @Provides
+    @Singleton
+    fun providePhotosApiService(retrofit: Retrofit) = retrofit.create(PhotosApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun providePhotoApiServiceHelper(photoApiServiceHelper: PhotoApiServiceImpl): PhotoApiServiceHelper =
+        photoApiServiceHelper
 }
