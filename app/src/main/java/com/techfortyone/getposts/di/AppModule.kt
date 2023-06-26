@@ -7,6 +7,8 @@ import com.techfortyone.getposts.data.remote.PhotosApiService
 import com.techfortyone.getposts.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,6 +21,7 @@ import javax.inject.Singleton
  * Modules serve as a way to centralize the configuration and binding logic required for dependency injection.
  */
 @Module
+@InstallIn(SingletonComponent::class)
 object AppModule {
     /***
      * The @Provides annotation is used to annotate methods inside a Dagger module class.
